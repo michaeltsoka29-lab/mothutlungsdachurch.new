@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grace Community SDA Church | Welcome Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-green: #2E5C48;
+            --accent-gold: #C5A059;
+            --soft-beige: #F5F1EA;
+            --text-dark: #2d3436;
+            --white: #FFFFFF;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+            color: var(--text-dark);
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 84%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo { font-weight: 700; color: var(--primary-green); text-decoration: none; font-size: 1.2rem; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); margin-left: 25px; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent-gold); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=2074&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-weight: 300;
+        }
+
+        .cta-btn {
+            background: var(--accent-gold);
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+        /* --- QUICK INFO BAR --- */
+        .info-bar {
+            background: var(--primary-green);
+            color: white;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            padding: 30px 8%;
+            text-align: center;
+        }
+
+        .info-item h4 { margin: 0 0 5px 0; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- WELCOME SECTION --- */
+        .welcome-section {
+            padding: 100px 8%;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .welcome-img img { width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .welcome-text h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--primary-green); }
+
+        /* --- SERVICES CARDS --- */
+        .features {
+            background-color: var(--soft-beige);
+            padding: 100px 8%;
+            text-align: center;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .f-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            transition: 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .f-card:hover { transform: translateY(-10px); }
+        .f-card i { font-size: 2.5rem; color: var(--accent-gold); display: block; margin-bottom: 20px; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 60px 8% 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .info-bar { grid-template-columns: 1fr; gap: 20px; }
+            .welcome-section { grid-template-columns: 1fr; }
+        }
+
+        /* --- HAMBURGER MENU STYLES --- */
+.hamburger {
+    display: none; /* Hidden by default on desktop */
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-green);
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+/* MOBILE RESPONSIVENESS (Screens smaller than 768px) */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex; /* Show hamburger */
+    }
+
+    .nav-links {
+        display: none; /* Hide links by default on mobile */
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* Adjust based on nav height */
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        padding: 20px 0;
+        text-align: center;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.active {
+        display: flex; /* Show links when "active" class is added */
+    }
+
+    .nav-links a {
+        margin: 15px 0;
+    }
+
+    /* Animation: Turn hamburger into an 'X' when active */
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+/* --- BACK TO TOP STYLES --- */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--accent-gold);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none; /* Hidden by default */
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    transition: all 0.3s ease;
+}
+
+.back-to-top:hover {
+    background-color: var(--primary-green);
+    transform: translateY(-5px);
+}
+
+/* For mobile, we make it slightly smaller */
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+
+.logo-container {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+    }
+
+    .sda-logo {
+        height: 40px; /* Adjust size as needed */
+        width: auto;
+    }
+
+    .church-name {
+        font-weight: 700;
+        color: var(--primary-green);
+        font-size: 1.2rem;
+    }
+    
+    /* On mobile, you might want to hide the name and just show the logo to save space */
+    @media (max-width: 480px) {
+        .church-name { display: none; }
+    }
+    </style>
+</head>
+<body>
+
+   <nav>
+    <a href="home.html" class="logo-container">
+        <img src="images/adventist-symbol-circle--denim.png" alt="SDA Logo" class="sda-logo">
+        <span class="church-name">Mothutlung Seventh-day Adventist Church</span>
+    </a>
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="nav-links" id="nav-links">
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="location.html">Visit</a>
+        <a href="ministries.html">Ministries</a>
+        <a href="connect.html">Connect</a>
+    </div>
+</nav>
+
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Finding Peace in Jesus</h1>
+            <p>Welcome to a community dedicated to sharing the everlasting gospel and the joy of the Sabbath rest.</p>
+            <a href="location.html" class="cta-btn">Plan Your Visit</a>
+        </div>
+    </header>
+
+    <section class="info-bar">
+        <div class="info-item">
+            <h4>Sabbath School</h4>
+            <p>Saturdays @ 9:30 AM</p>
+        </div>
+        <div class="info-item">
+            <h4>Worship Service</h4>
+            <p>Saturdays @ 11:00 AM</p>
+        </div>
+        <div class="info-item">
+            <h4>Prayer Meeting</h4>
+            <p>Wednesdays @ 7:00 PM</p>
+        </div>
+    </section>
+
+    <section class="welcome-section">
+        <div class="welcome-img">
+            <img src="https://images.unsplash.com/photo-1543191878-f71694f420c2?q=80&w=2070&auto=format&fit=crop" alt="Church Interior">
+        </div>
+        <div class="welcome-text">
+            <h2>You Belong Here</h2>
+            <p>Whether you’re a lifelong Adventist or just curious about who Jesus is, our doors and hearts are open to you. We believe in a faith that touches every part of life—physical, mental, and spiritual.</p>
+            <p>Join us as we study the Word, serve our neighbors, and wait with hope for the return of our Savior.</p>
+            <a href="about.html" style="color: var(--primary-green); font-weight: 700; text-decoration: none;">Our Beliefs & Mission →</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem;">Explore Our Church</h2>
+        <div class="feature-grid">
+            <a href="media.html" class="f-card">
+                <i>📖</i>
+                <h3>Watch Sermons</h3>
+                <p>Catch up on our latest message or join our live stream every Sabbath morning.</p>
+            </a>
+            <a href="ministries.html" class="f-card">
+                <i>🤝</i>
+                <h3>Get Involved</h3>
+                <p>From Pathfinders to Community Service, find a place where you can grow and serve.</p>
+            </a>
+            <a href="connect.html" class="f-card">
+                <i>🙏</i>
+                <h3>Prayer Support</h3>
+                <p>Life is hard, but you don't have to walk alone. Let us lift you up in prayer.</p>
+            </a>
+        </div>
+    </section>
+<button id="backToTop" class="back-to-top" title="Go to top">↑</button>
+  <footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-column">
+            <h3 class="footer-logo">Mothutlung Seventh-day Adventist Church</h3>
+            <p class="footer-tagline">A Seventh-day Adventist community growing in grace and waiting in hope.</p>
+            <div class="social-icons">
+                <a href="#">FB</a>
+                <a href="#">YT</a>
+                <a href="#">IG</a>
+            </div>
+        </div>
+
+        <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+                <li><a href="about.html">Our Beliefs</a></li>
+                <li><a href="ministries.html">Ministries</a></li>
+                <li><a href="media.html">Sermon Archive</a></li>
+                <li><a href="connect.html">Giving</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h4>Visit Us</h4>
+            <p>123 Faith Avenue<br>Cityville, ST 12345</p>
+            <p><strong>Saturdays:</strong> 9:30 AM & 11:00 AM</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="copyright">
+            &copy; 2026 Mothutlung Seventh-day Adventist Church. All Rights Reserved.
+        </div>
+        <div class="credits">
+            Made by <span class="credit-brand">Wacx Digital</span> &bull; Secured by <span class="credit-brand">Hexert Cyber</span>
+        </div>
+    </div>
+</footer>
+
+<style>
+    /* --- FOOTER STYLES --- */
+    .site-footer {
+        background-color: #1b362a; /* Slightly darker than primary green for depth */
+        color: #ffffff;
+        padding: 80px 8% 30px;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 50px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-bottom: 50px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.8rem;
+        color: var(--accent-gold);
+        margin-bottom: 15px;
+    }
+
+    .footer-tagline {
+        opacity: 0.8;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        max-width: 300px;
+    }
+
+    .footer-column h4 {
+        color: var(--accent-gold);
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+        margin-bottom: 25px;
+    }
+
+    .footer-links {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-links li {
+        margin-bottom: 12px;
+    }
+
+    .footer-links a {
+        color: white;
+        text-decoration: none;
+        opacity: 0.7;
+        transition: 0.3s;
+        font-size: 0.9rem;
+    }
+
+    .footer-links a:hover {
+        opacity: 1;
+        padding-left: 5px;
+        color: var(--accent-gold);
+    }
+
+    .social-icons a {
+        display: inline-block;
+        margin-right: 15px;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        opacity: 0.8;
+    }
+
+    /* --- CREDITS BAR --- */
+    .footer-bottom {
+        max-width: 1200px;
+        margin: 30px auto 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.8rem;
+        opacity: 0.6;
+    }
+
+    .credit-brand {
+        font-weight: 700;
+        color: var(--accent-gold);
+        letter-spacing: 0.5px;
+    }
+
+    /* Responsive */
+    @media (max-width: 850px) {
+        .footer-content {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+        .footer-tagline {
+            margin: 0 auto;
+        }
+        .footer-bottom {
+            flex-direction: column;
+            gap: 15px;
+            text-align: center;
+        }
+    }
+</style>
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+        // Toggle the "active" class on both the icon and the links
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked (useful for one-page sites)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+    const backToTopBtn = document.getElementById('backToTop');
+
+// Show the button when the user scrolls down 300px
+window.onscroll = function() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTopBtn.style.display = "block";
+    } else {
+        backToTopBtn.style.display = "none";
+    }
+};
+
+// When the user clicks the button, scroll to the top smoothly
+backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+</script>
+</body>
+</html>
